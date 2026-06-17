@@ -175,7 +175,7 @@ Write-T "当前状态:Motrix 直连(不走代理,省流量)"
 Write-Host ""
 Write-T "日常使用:"
 Write-Host "  • 桌面「Motrix直连.bat」  = 直连(默认,保持这个)" -ForegroundColor White
-Write-Host "  • 桌面「Motrix走代理.bat」= 临时走代理下墙外资源" -ForegroundColor White
+Write-Host "  • 桌面「Motrix走代理.bat」= 临时走代理下载资源" -ForegroundColor White
 Write-Host ""
 Write-T "代理端口: $($script:confirmedPort)(改端口重跑本向导,或编辑 %LOCALAPPDATA%\MotrixProxy\port.txt)"
 Write-Host ""

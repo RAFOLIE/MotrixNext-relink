@@ -8,7 +8,7 @@
     2) %LOCALAPPDATA%\MotrixProxy\port.txt(部署后的位置)
   都找不到则默认 7890。
 .PARAMETER Mode
-  proxy  = 走代理(下载墙外资源)
+  proxy  = 走代理(下载需要代理的资源)
   direct = 直连(不走代理,省流量,默认)
 #>
 param(
@@ -152,7 +152,7 @@ Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
 if ($Mode -eq 'proxy') {
     Write-Host " Motrix 已切换为走代理(端口 $ProxyPort)      " -ForegroundColor Yellow
-    Write-Host " 下载墙外资源时使用,完成后请切回直连   " -ForegroundColor Yellow
+    Write-Host " 下载需要代理的资源时使用,完成后请切回直连" -ForegroundColor Yellow
 } else {
     Write-Host " Motrix 已切换为直连,不走代理          " -ForegroundColor Green
     Write-Host " 下载流量不再消耗你的代理额度           " -ForegroundColor Green
