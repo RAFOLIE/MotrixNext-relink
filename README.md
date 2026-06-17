@@ -1,6 +1,6 @@
 # MotrixNext-relink
 
-> 🌐 **中文** | [English](#english-below)
+> 🌐 **中文** | [English](#english)
 
 一个让 [Motrix Next](https://github.com/agalwood/Motrix) 下载器**默认走直连、绕开你的代理端口**的小工具。因为开了代理软件后,即便下载**国内资源**也可能被系统代理劫持、白白消耗代理流量,所以默认把 Motrix 掰回直连;需要让某个下载走代理时一键切换,下完切回。
 
@@ -182,8 +182,6 @@ A: 把整个文件夹拷过去,双击 `配置引导.bat`,输入新端口即可�
 ---
 
 # English
-
-# MotrixNext-relink (English)
 
 A tiny tool that makes [Motrix Next](https://github.com/agalwood/Motrix) **download directly by default, bypassing your proxy port**. With a proxy client running, Motrix's aria2 engine may route **all** downloads through the proxy — even local/domestic ones — wasting your quota. This keeps Motrix direct by default; flip to proxy on demand, then flip back.
 
