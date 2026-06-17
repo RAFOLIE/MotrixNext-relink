@@ -2,7 +2,7 @@
 
 > 🌐 **中文** | [English](#english-below)
 
-一个让 [Motrix Next](https://github.com/agalwood/Motrix) 下载器**默认走直连、绕开你的代理端口**的小工具,需要让下载走代理时一键切换,下完切回。**省你的代理流量额度。**
+一个让 [Motrix Next](https://github.com/agalwood/Motrix) 下载器**默认走直连、绕开你的代理端口**的小工具。因为开了代理软件后,即便下载**国内资源**也可能被系统代理劫持、白白消耗代理流量,所以默认把 Motrix 掰回直连;需要让某个下载走代理时一键切换,下完切回。
 
 ```
 双击「配置引导.bat」→ 输入代理端口 → 自动配好 → 完事
@@ -12,11 +12,11 @@
 
 ## 它解决什么问题
 
-装了代理软件(Clash / V2Ray / Surge 等)后,Motrix Next 内置的 aria2 引擎可能把**所有下载流量**都走代理,白白烧掉代理流量额度——尤其是下大文件、BT、迅雷链时。
+装了代理软件(Clash / V2Ray / Surge 等)后,Motrix Next 内置的 aria2 引擎可能把**所有下载流量**都走代理——哪怕你下的只是**国内资源**,也会被系统代理劫持,白白烧掉代理流量额度。
 
 MotrixNext-relink 让你:
-- 🟢 **默认直连**(日常下载不耗代理流量)
-- 🟡 **一键切走代理**(下载需要代理的资源时)
+- 🟢 **默认直连**(日常下载不耗代理流量,国内资源直连更快)
+- 🟡 **一键切走代理**(需要让下载资源走代理时)
 - 🟢 **一键切回直连**(下完恢复)
 
 切换**即时生效**(通过 aria2 JSON-RPC),无需重启 Motrix;同时持久化到配置,重启 Motrix 状态不变。
@@ -37,7 +37,7 @@ MotrixNext-relink 让你:
 | 脚本 | 作用 | 什么时候用 |
 |---|---|---|
 | `Motrix直连.bat` 🟢 | **默认保持**,不走代理 | 日常下载(省代理流量) |
-| `Motrix走代理.bat` 🟡 | 临时走代理 | 下载需要代理的资源(下完切回) |
+| `Motrix走代理.bat` 🟡 | 临时走代理 | 需要让下载资源走代理时(下完切回) |
 
 ### 换端口 / 重装 / 换电脑
 重新双击 `配置引导.bat`,输入新端口即可。会自动重新部署,无需手动改任何文件。
@@ -185,7 +185,7 @@ A: 把整个文件夹拷过去,双击 `配置引导.bat`,输入新端口即可�
 
 # MotrixNext-relink (English)
 
-A tiny tool that makes [Motrix Next](https://github.com/agalwood/Motrix) **download directly by default, bypassing your proxy port** — so you don't burn through your proxy data quota. Switch to proxy mode with one click when a download needs the proxy, then switch back.
+A tiny tool that makes [Motrix Next](https://github.com/agalwood/Motrix) **download directly by default, bypassing your proxy port**. With a proxy client running, Motrix's aria2 engine may route **all** downloads through the proxy — even local/domestic ones — wasting your quota. This keeps Motrix direct by default; flip to proxy on demand, then flip back.
 
 ```
 Double-click "配置引导.bat" (setup guide) → enter your proxy port → done
@@ -197,7 +197,7 @@ With a proxy client running (Clash / V2Ray / Surge), Motrix Next's bundled aria2
 
 MotrixNext-relink lets you:
 - 🟢 **Default: direct** (daily downloads don't use proxy quota)
-- 🟡 **One-click → proxy** (for downloads that need the proxy)
+- 🟡 **One-click → proxy** (when a download should go through the proxy)
 - 🟢 **One-click → back to direct**
 
 Switching is **instant** (via aria2 JSON-RPC, no Motrix restart) and **persisted** (survives Motrix restart).
