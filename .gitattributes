@@ -1,0 +1,15 @@
+# 强制 bat/cmd 文件使用 CRLF 换行
+# Windows cmd.exe 在中文系统(GBK 代码页)下解析 LF-only 的 bat 会失败,
+# 导致命令名被截断(如 '0B' 不是内部或外部命令)。这里锁定 CRLF。
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+
+# PowerShell 脚本保持 LF(跨平台兼容,PS 对换行符不敏感)
+*.ps1    text eol=lf
+
+# Markdown / 配置文件用平台默认
+*.md     text=auto
+*.json   text=auto
+*.yaml   text=auto
+*.yml    text=auto
+*.conf   text=auto

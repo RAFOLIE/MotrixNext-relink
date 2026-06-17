@@ -1,6 +1,5 @@
 @echo off
-chcp 65001 >nul
-title Motrix èµ° Clash 7890
+title Motrix ×ß´úÀí
 color 0E
 powershell -NoProfile -ExecutionPolicy Bypass -File "%LOCALAPPDATA%\MotrixProxy\motrix-proxy.ps1" -Mode proxy
 echo.

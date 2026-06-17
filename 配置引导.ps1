@@ -16,6 +16,15 @@ function Write-Warn($m){ Write-Host "[!] $m" -ForegroundColor Yellow }
 function Write-Err($m) { Write-Host "[X] $m" -ForegroundColor Red }
 function Write-H($m)   { Write-Host $m -ForegroundColor Cyan }
 
+# 写 bat 文件:GBK(936)编码 + CRLF 换行 + 无 BOM
+# 原因:cmd.exe 不认 UTF-8 BOM(会把 BOM 字节当命令字符),且中文系统默认 GBK 代码页
+function Write-BatFile {
+    param([string]$Path, [string]$Content)
+    $crlf = $Content -replace "`r`n", "`n" -replace "`n", "`r`n"
+    $gbk = [System.Text.Encoding]::GetEncoding(936)
+    [System.IO.File]::WriteAllText($Path, $crlf, $gbk)
+}
+
 # ---------- 0. 欢迎横幅 ----------
 Write-Host ""
 Write-Host "================================================" -ForegroundColor Cyan
@@ -130,28 +139,12 @@ if ([string]::IsNullOrWhiteSpace($deployBat) -or $deployBat.Trim().ToUpper() -eq
     $desktop = [Environment]::GetFolderPath('Desktop')
 
     $directBat = Join-Path $desktop 'Motrix直连.bat'
-    $batDirect = @"
-@echo off
-chcp 65001 >nul
-title Motrix 直连(不走代理)
-color 0A
-powershell -NoProfile -ExecutionPolicy Bypass -File "$destDir\motrix-proxy.ps1" -Mode direct
-echo.
-pause
-"@
-    [System.IO.File]::WriteAllText($directBat, $batDirect, [System.Text.Encoding]::GetEncoding('gb2312'))
+    $batDirect = "@echo off`r`nchcp 65001 >nul`r`ntitle Motrix 直连(不走代理)`r`ncolor 0A`r`npowershell -NoProfile -ExecutionPolicy Bypass -File `"$destDir\motrix-proxy.ps1`" -Mode direct`r`necho.`r`npause`r`n"
+    Write-BatFile -Path $directBat -Content $batDirect
 
     $proxyBat = Join-Path $desktop 'Motrix走代理.bat'
-    $batProxy = @"
-@echo off
-chcp 65001 >nul
-title Motrix 走代理(端口 $($script:confirmedPort))
-color 0E
-powershell -NoProfile -ExecutionPolicy Bypass -File "$destDir\motrix-proxy.ps1" -Mode proxy
-echo.
-pause
-"@
-    [System.IO.File]::WriteAllText($proxyBat, $batProxy, [System.Text.Encoding]::GetEncoding('gb2312'))
+    $batProxy = "@echo off`r`nchcp 65001 >nul`r`ntitle Motrix 走代理(端口 $($script:confirmedPort))`r`ncolor 0E`r`npowershell -NoProfile -ExecutionPolicy Bypass -File `"$destDir\motrix-proxy.ps1`" -Mode proxy`r`necho.`r`npause`r`n"
+    Write-BatFile -Path $proxyBat -Content $batProxy
 
     Write-Ok "已在桌面创建: $directBat"
     Write-Ok "已在桌面创建: $proxyBat"

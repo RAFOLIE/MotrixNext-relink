@@ -1,6 +1,5 @@
 @echo off
-chcp 65001 >nul
-title Motrix 鐩磋繛(涓嶈蛋 Clash)
+title Motrix 直连(不走代理)
 color 0A
 powershell -NoProfile -ExecutionPolicy Bypass -File "%LOCALAPPDATA%\MotrixProxy\motrix-proxy.ps1" -Mode direct
 echo.

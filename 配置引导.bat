@@ -1,7 +1,6 @@
 @echo off
-chcp 65001 >nul
-title Motrix Next 鐩磋繛 - 閰嶇疆鍚戝
+title Motrix Next 直连 - 配置向导
 color 0B
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0閰嶇疆寮曞.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0配置引导.ps1"
 echo.
 pause
