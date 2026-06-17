@@ -1,0 +1,27 @@
+# 运行时生成的端口配置(每台机器不同,不入库)
+port.txt
+
+# 日志
+*.log
+
+# 编辑器/系统临时文件
+.history/
+*.tmp
+*.bak
+*.swp
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# 备份带时间戳的副本
+*.ps1.bak
+*.copy.*
+
+# 用户个人配置快照(含敏感信息,绝不入库)
+设置快照/config.json
+设置快照/system.json
+状态快照/status.json
+
+# 打包产物
+*.zip
